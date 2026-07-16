@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}
+Loom & Luxe Studio
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <!-- =======================================================================
+    01. HERO CAROUSEL & ACCENTS BANNER
+    ======================================================================== -->
+    <section class="hero" id="home">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+
+        <div class="hero-content">
+            <h1>Premium Fabrics for Every Design</h1>
+            <p>
+                Discover high-quality fabrics, elegant patterns, and timeless designs crafted for your creativity.
+            </p>
+            <a href="{{ url_for('order') }}" class="btn btn-dark btn-lg">Shop Now</a>
+            <a href="#collections" class="btn btn-outline-light btn-lg">Explore Collections</a>
+            <p>Luxury fabrics crafted for modern designers</p>
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    02. COHESIVE FABRIC COLLECTIONS EXHIBIT
+    ======================================================================== -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4" id="collections">Our Fabric Collections</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>Special Fabric Collection</h4>
+                    <p>Premium quality special fabrics designed with unique textures, patterns, and finishes.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>Engineering Fabric Collection</h4>
+                    <p>Durable and high-performance fabrics suitable for industrial and technical applications.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>Checks Fabric Collection</h4>
+                    <p>Stylish checked fabrics available in different designs and color combinations.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>Printed Fabric Collection</h4>
+                    <p>Attractive printed fabrics with modern designs for creative fashion solutions.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>Strip / Lining Fabric Collection</h4>
+                    <p>Quality stripe and lining fabrics perfect for professional and elegant finishes.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card text-center p-4">
+                    <h4>White Fabric Collection</h4>
+                    <p>Clean, premium white fabrics suitable for multiple applications and styles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    03. ADVANTAGES & VALUE PROPOSITIONS
+    ======================================================================== -->
+    <section class="why-choose-us py-5">
+        <div class="container" id="whyus">
+
+            <div class="text-center mb-5">
+                <h2>Why Choose Us</h2>
+                <p class="text-muted">Delivering quality, style, and trust through every fabric collection.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-patch-check"></i>
+                        <h4>Premium Quality</h4>
+                        <p>Carefully selected fabrics crafted for durability, comfort, and exceptional finishing.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-grid"></i>
+                        <h4>Wide Collection</h4>
+                        <p>Explore a diverse range of Suiting, Shirting, Blazer, and Ethnic Wear fabrics.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-stars"></i>
+                        <h4>Latest Designs</h4>
+                        <p>Stay ahead with modern patterns, premium textures, and trending collections.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-currency-rupee"></i>
+                        <h4>Fair Pricing</h4>
+                        <p>Premium fabrics offered at competitive prices without compromising quality.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-people"></i>
+                        <h4>Customer Focused</h4>
+                        <p>Dedicated support and personalized service for every customer requirement.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="choose-card text-center">
+                        <i class="bi bi-shield-check"></i>
+                        <h4>Trusted Business</h4>
+                        <p>Built on reliability, honesty, and trust to create long-lasting customer relationships.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    04. DYNAMIC CATEGORIES INVENTORY HUB
+    ======================================================================== -->
+    <section id="fabric-category" class="container py-5">
+        <div class="text-center mb-5">
+            <h2>Fabric Categories</h2>
+            <p class="text-muted">Explore our premium fabric collections.</p>
+        </div>
+
+        <div class="row g-4">
+            {% if categories %}
+                {% for category in categories %}
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card h-100">
+                        <img src="{{ url_for('static', filename=category.category_image) }}"
+                             class="img-fluid"
+                             alt="{{ category.category_name }}">
+                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                            <div>
+                                <h4 class="mb-2">{{ category.category_name }}</h4>
+                                <p class="text-muted small">{{ category.description }}</p>
+                            </div>
+                            <a class="btn btn-dark btn-lg" href="{{ url_for('category', category_id=category.category_id) }}">
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5">
+                    <h4 class="text-muted">No Categories Available</h4>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    05. BRAND MANIFESTO & ACRONYM BREAKDOWN
+    ======================================================================== -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4" id="about">About Us</h2>
+        <p class="text-center mb-5">
+            At Loom & Luxe, we believe in delivering excellence through strong values, quality services, and long-lasting relationships with our clients. Our foundation is built on reliability, integrity, growth, honesty, and trust.
+        </p>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card about-card p-4 text-center shadow">
+                    <h3>Reliability</h3>
+                    <p>We consistently deliver on our promises and stand by the quality of our products and services.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card p-4 text-center shadow">
+                    <h3>Integrity</h3>
+                    <p>We operate with honesty, transparency, and strong moral principles in every aspect of our business.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card about-card p-4 text-center shadow">
+                    <h3>Growth</h3>
+                    <p>We are committed to continuous innovation, improvement, and the personal and professional growth of our team and clients.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card about-card p-4 text-center shadow">
+                    <h3>Honesty</h3>
+                    <p>We value open communication and truthfulness with our clients and employees.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card about-card p-4 text-center shadow">
+                    <h3>Trust</h3>
+                    <p>We build and maintain trust through accountability, quality, and client satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Scripts -->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script>
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+    }, 5000);
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+</script>
+{% endblock %}

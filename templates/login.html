@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Arrivals | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-lg-10">
+            <div class="account-card">
+                <div class="row g-0">
+
+                    <!-- =======================================================
+                    01. SPLIT VIEW: LEFT-HAND MANIFESTO PANEL
+                    ======================================================== -->
+                    <div class="col-md-5 account-left">
+                        <h1 class="account-title">Loom & Lux Studio</h1>
+                        <p class="mt-4">Welcome to Admin Dashboard</p>
+                        <p>
+                            Manage your fabric collections, update product details, monitor
+                            inventory, and control website content efficiently. Keep your
+                            premium fabric store organized with complete administrative control.
+                        </p>
+                    </div>
+
+                    <!-- =======================================================
+                    02. SPLIT VIEW: RIGHT-HAND GATEWAY CREDENTIALS FORM
+                    ======================================================== -->
+                    <div class="col-md-7 bg-white">
+                        <div class="p-5">
+
+                            <div class="text-center mb-4">
+                                <h2 class="account-heading">Admin Login</h2>
+                                <p class="text-muted">
+                                    Sign in to access your account (Admin Only)
+                                </p>
+                            </div>
+
+                            <form action="/login" method="POST">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text"
+                                           name="username"
+                                           class="form-control"
+                                           placeholder="Enter your username"
+                                           required />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password"
+                                           name="password"
+                                           class="form-control"
+                                           placeholder="Enter your password"
+                                           required />
+                                </div>
+
+                                <button type="submit" class="btn btn-outline-light login-btn w-100">
+                                    Login
+                                </button>
+
+                                <button type="reset" class="btn btn-outline-dark w-100 mt-3">
+                                    Cancel
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

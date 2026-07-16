@@ -1,0 +1,216 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+Edit Product | Loom & Lux Studio
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-page">
+
+<div class="page-header">
+    <div>
+        <h1>Edit Product</h1>
+        <p>Update product information</p>
+    </div>
+</div>
+
+
+<div class="box">
+
+<form method="POST" enctype="multipart/form-data">
+
+
+<div class="mb-3">
+<label>Product Name</label>
+
+<input
+type="text"
+name="product_name"
+class="form-control"
+value="{{product.product_name}}"
+required>
+
+</div>
+
+
+
+<div class="mb-3">
+
+<label>Category</label>
+
+<select name="category_id" class="form-select">
+
+
+{% for category in categories %}
+
+<option
+value="{{category.category_id}}"
+
+{% if category.category_id == product.category_id %}
+selected
+{% endif %}
+
+>
+
+{{category.category_name}}
+
+</option>
+
+
+{% endfor %}
+
+</select>
+
+</div>
+
+
+
+<div class="mb-3">
+
+<label>Price</label>
+
+<input
+type="number"
+name="price"
+class="form-control"
+value="{{product.price}}">
+
+</div>
+
+
+
+<div class="mb-3">
+
+<label>Stock</label>
+
+<input
+type="number"
+name="stock"
+class="form-control"
+value="{{product.stock}}">
+
+</div>
+
+
+
+
+<div class="mb-3">
+
+<label>Description</label>
+
+<textarea
+name="description"
+class="form-control"
+rows="4">{{product.description}}</textarea>
+
+</div>
+
+
+
+
+<div class="mb-3">
+
+<label>Product Image</label>
+
+<input
+type="file"
+name="product_image"
+class="form-control">
+
+</div>
+
+
+
+<div class="mb-3">
+
+<label>New Arrival</label>
+
+<select name="is_new_arrival" class="form-select">
+
+
+<option value="1"
+
+{% if product.is_new_arrival == 1 %}
+selected
+{% endif %}
+
+>
+Yes
+</option>
+
+
+
+<option value="0"
+
+{% if product.is_new_arrival == 0 %}
+selected
+{% endif %}
+
+>
+No
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+<div class="mb-3">
+
+<label>Status</label>
+
+<select name="status" class="form-select">
+
+
+<option value="Available"
+
+{% if product.status=="Available" %}
+selected
+{% endif %}
+
+>
+Available
+</option>
+
+
+
+<option value="Unavailable"
+
+{% if product.status=="Unavailable" %}
+selected
+{% endif %}
+
+>
+Unavailable
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+<button class="btn contact-btn">
+
+Update Product
+
+</button>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+{% endblock %}

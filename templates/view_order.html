@@ -1,0 +1,57 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+View Order | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<div class="form-page">
+
+    <!-- =======================================================================
+    01. ADMINISTRATIVE CONSOLE HEADER
+    ======================================================================== -->
+    <div class="page-header">
+        <div>
+            <h1>Order Details</h1>
+            <p>Customer transaction and fulfillment information</p>
+        </div>
+    </div>
+
+    <!-- =======================================================================
+    02. ORDER INVOICE PROFILE DOSSIER
+    ======================================================================== -->
+    <div class="box">
+
+        <h3>Customer Information</h3>
+        <p><b>Name:</b> {{ order.customer_name }}</p>
+        <p><b>Phone:</b> {{ order.customer_phone }}</p>
+        <p><b>Email:</b> {{ order.customer_email }}</p>
+
+        <hr class="my-4" style="border-top: 1px dashed var(--border-color, #ccc); opacity: 0.5;">
+
+        <h3>Order Information</h3>
+        <p><b>Category:</b> {{ order.category_name }}</p>
+        <p><b>Product:</b> {{ order.product_name }}</p>
+        <p><b>Quantity:</b> {{ order.quantity }} Meter(s)</p>
+
+        <hr class="my-4" style="border-top: 1px dashed var(--border-color, #ccc); opacity: 0.5;">
+
+        <h3>Delivery Details</h3>
+        <p><b>Address:</b> {{ order.delivery_address }}</p>
+
+        <hr class="my-4" style="border-top: 1px dashed var(--border-color, #ccc); opacity: 0.5;">
+
+        <h3>Payment</h3>
+        <p><b>UTR Number:</b> {{ order.utr_number }}</p>
+
+        <hr class="my-4" style="border-top: 1px dashed var(--border-color, #ccc); opacity: 0.5;">
+
+        <h3>Additional Requirements</h3>
+        <div class="message-box" style="white-space: pre-wrap;">
+            {{ order.additional_requirements }}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

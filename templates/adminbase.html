@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Loom & Luxe Studio | Admin Panel
+        {% endblock %}
+    </title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='images/favicon.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin-style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+
+        <h2>Loom & Luxe Studio</h2>
+
+        <p>Admin Panel</p>
+
+    </div>
+
+    <ul>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='admin_dashboard' %}active{% endif %}"
+               href="{{ url_for('admin_dashboard') }}">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='add_product' %}active{% endif %}"
+               href="{{ url_for('add_product') }}">
+                <i class="fa-solid fa-box"></i>
+                Add Product
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='all_products' %}active{% endif %}"
+               href="{{ url_for('all_products') }}">
+                <i class="fa-solid fa-shirt"></i>
+                All Products
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='add_category' %}active{% endif %}"
+               href="{{ url_for('add_category') }}">
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='orders' %}active{% endif %}"
+               href="{{ url_for('orders') }}">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='customers' %}active{% endif %}"
+               href="{{ url_for('customers') }}">
+                <i class="fa-solid fa-users"></i>
+                Customers
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='messages' %}active{% endif %}"
+               href="{{ url_for('messages') }}">
+                <i class="fa-solid fa-envelope"></i>
+                Messages
+            </a>
+        </li>
+
+        <li>
+            <a class="admin-nav-link {% if request.endpoint=='admin_new_arrivals' %}active{% endif %}"
+               href="{{ url_for('admin_new_arrivals') }}">
+                <i class="fa-solid fa-fire"></i>
+                New Arrivals
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('logout') }}"
+               onclick="return confirm('Are you sure you want to logout?')">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="top-left">
+
+            <h2>
+
+                {% block page_title %}
+                Dashboard
+                {% endblock %}
+
+            </h2>
+
+        </div>
+
+        <div class="top-right">
+
+            <div class="date-box">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span id="current-date"></span>
+
+            </div>
+
+            <div class="admin-profile">
+
+                <img src="{{ url_for('static', filename='images/yash.png') }}"
+                     alt="Admin"
+                     class="admin-avatar">
+
+                <div>
+                    <h4>{{ session.get('admin', 'Admin') }}</h4>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+
+    <div class="flash-container">
+
+        {% for category,message in messages %}
+
+        <div class="flash-alert {{ category }}">
+
+            <span>{{ message }}</span>
+
+            <button onclick="this.parentElement.remove()">
+
+                ×
+
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="admin-footer">
+
+        © Loom & Luxe Studio
+
+    </footer>
+
+</div>
+
+<script>
+
+    const options = {
+
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+
+    };
+
+    document.getElementById("current-date").innerHTML =
+
+        new Date().toLocaleDateString("en-IN", options);
+
+
+    // Auto Close Flash Messages
+
+    setTimeout(function () {
+
+        document.querySelectorAll(".flash-alert").forEach(function (alert) {
+
+            alert.style.opacity = "0";
+
+            alert.style.transition = "0.5s";
+
+            setTimeout(function () {
+
+                alert.remove();
+
+            }, 500);
+
+        });
+
+    }, 3000);
+
+</script>
+
+</body>
+</html>

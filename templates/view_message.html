@@ -1,0 +1,46 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+View Message | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<div class="form-page">
+
+    <!-- =======================================================================
+    01. ADMINISTRATIVE CONSOLE HEADER
+    ======================================================================== -->
+    <div class="page-header">
+        <div>
+            <h1>Message Details</h1>
+            <p>Customer enquiry information</p>
+        </div>
+    </div>
+
+    <!-- =======================================================================
+    02. ENQUIRY DOSSIER & PROFILE METADATA
+    ======================================================================== -->
+    <div class="box">
+
+        <h3>Customer Information</h3>
+        <p><b>Name:</b> {{ message.full_name }}</p>
+        <p><b>Email:</b> {{ message.email }}</p>
+        <p><b>Phone:</b> {{ message.phone }}</p>
+
+        <hr class="my-4" style="border-top: 1px dashed var(--border-color, #ccc); opacity: 0.5;">
+
+        <h3>Message Details</h3>
+        <p><b>Subject:</b> {{ message.subject }}</p>
+
+        <p><b>Message:</b></p>
+        <div class="message-box" style="white-space: pre-wrap;">
+            {{ message.message }}
+        </div>
+
+        <p><b>Status:</b> {{ message.status }}</p>
+        <p><b>Date:</b> {{ message.created_at }}</p>
+
+    </div>
+
+</div>
+{% endblock %}

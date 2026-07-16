@@ -1,0 +1,221 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+Dashboard | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+
+<!-- =======================================================================
+01. ANALYTICS METRIC CARDS
+======================================================================== -->
+<div class="cards">
+
+    <div class="card">
+        <i class="fa-solid fa-box"></i>
+        <div>
+            <h3>{{ total_products }}</h3>
+            <p>Total Products</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-layer-group"></i>
+        <div>
+            <h3>{{ total_categories }}</h3>
+            <p>Categories</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <div>
+            <h3>{{ total_orders }}</h3>
+            <p>Total Orders</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-users"></i>
+        <div>
+            <h3>{{ total_customers }}</h3>
+            <p>Customers</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+            <h3>{{ total_messages }}</h3>
+            <p>Messages</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- =======================================================================
+02. QUICK ACTIONS TRIGGER LINKS
+========================================================================
+<div class="quick-actions">
+
+    <a href="{{ url_for('add_product') }}">
+        <button type="button">Add Product</button>
+    </a>
+
+    <a href="{{ url_for('add_category') }}">
+        <button type="button">Add Category</button>
+    </a>
+
+    <a href="{{ url_for('admin_new_arrivals') }}">
+        <button type="button">Add New Arrival</button>
+    </a>
+
+    <a href="{{ url_for('orders') }}">
+        <button type="button">View Orders</button>
+    </a>
+
+</div>-->
+
+<!-- =======================================================================
+03. VISUALIZATION ANALYTICS CHART
+======================================================================== --
+<div class="chart-box">
+    <h2>Monthly Sales Overview</h2>
+    <canvas id="salesChart"></canvas>
+</div>
+-->
+<!-- =======================================================================
+04. SPLIT GRID CONTENT: RECENT ORDERS & RECENT MESSAGES
+======================================================================== -->
+<div class="dashboard-content">
+
+    <!-- Recent Orders Table -->
+    <div class="box">
+        <h2>Recent Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if recent_orders %}
+                    {% for order in recent_orders %}
+                    <tr>
+                        <td>#RF{{ "%03d"|format(order.order_id) }}</td>
+                        <td>{{ order.customer_name }}</td>
+                        <td>
+                            {% if order.order_status == "Completed" %}
+                                <span class="status-active">Completed</span>
+                            {% elif order.order_status == "Processing" %}
+                                <span class="status-processing">Processing</span>
+                            {% else %}
+                                <span class="status-pending">{{ order.order_status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align:center; padding:20px;">No Orders Found</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Recent Messages Unordered List -->
+    <div class="box">
+        <h2>Recent Messages</h2>
+        <ul>
+            {% if recent_messages %}
+                {% for message in recent_messages %}
+                <li>
+                    {{ message.subject }} <strong>from</strong> {{ message.full_name }}
+                </li>
+                {% endfor %}
+            {% else %}
+                <li style="padding:10px 0; color:#777;">No Messages</li>
+            {% endif %}
+        </ul>
+    </div>
+
+</div>
+
+<!-- =======================================================================
+05. LATEST PRODUCTS STOCK SHEET
+======================================================================== -->
+<div class="box">
+    <h2>Latest Products</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if latest_products %}
+                {% for product in latest_products %}
+                <tr>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.category_name }}</td>
+                    <td>
+                        {% if product.status == "Available" %}
+                            <span class="status-active">Available</span>
+                        {% else %}
+                            <span class="status-pending">Out of Stock</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('edit_product', product_id=product.product_id) }}">
+                            <button type="button" class="edit-btn">Edit</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align:center; padding:20px;">No Products Found</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<!-- =======================================================================
+06. CHART INITIALIZATION ENGINE
+======================================================================== --
+<script>
+    const ctx = document.getElementById("salesChart");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            datasets: [{
+                label: "Orders",
+                data: [10, 20, 18, 25, 30, 22]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>-->
+
+{% endblock %}

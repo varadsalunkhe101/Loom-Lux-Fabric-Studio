@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        {% block title %}Loom & Luxe Studio{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}" />
+</head>
+<body>
+
+    <header>
+        <a href="https://instagram.com/" class="instagram-float" target="_blank">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <strong>
+            First Order Special ! Be our customer today and enjoy 10% off your first order.
+        </strong>
+    </header>
+
+    <nav>
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-link" href="{{ url_for('home') }}#about">About</a>
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+
+            <a href="{{ url_for('home') }}">
+                <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Right Fabric Studio Logo" />
+            </a>
+
+            <a class="nav-link" href="{{ url_for('account') }}">Admin</a>
+            <a class="nav-link" href="{{ url_for('home') }}#fabric-category">Categories</a>
+            <a class="nav-link" href="{{ url_for('new_arrivals') }}">New Arrivals</a>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h4>Loom & Luxe Studio</h4>
+                    <p>Premium quality fabrics designed for fashion, comfort, and creativity.</p>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        Gala No. 10, Vakhar Bhag, Near Maruti Chowk, Sangli, Maharashtra – 416416
+                    </p>
+                    <p>
+                        <i class="bi bi-envelope"></i>
+                        loom&luxeStudio@gmail.com
+                    </p>
+                    <p>
+                        <i class="bi bi-telephone"></i> +91 95XXX XXXXX
+                        <br />
+                        <i class="bi bi-telephone"></i> +91 73XXX XXXXX
+                    </p>
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="text-center">
+                <p class="mb-0">© 2026 Loom & Luxe Studio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

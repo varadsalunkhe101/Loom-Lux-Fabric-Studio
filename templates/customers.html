@@ -1,0 +1,125 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+Customers | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<div class="form-page">
+
+    <!-- ==========================================
+       01. PAGE CONTENT HEADER
+       ========================================== --
+    <div class="page-header">
+        <div>
+            <h1>Customers Management</h1>
+            <p>Manage registered customers and customer details</p>
+        </div>
+    </div>
+
+    -- ==========================================
+       02. CUSTOMER ENGAGEMENT METRIC CARDS
+       ==========================================
+    <div class="cards">
+
+        -- Total System Users --
+        <div class="card">
+            <i class="fa-solid fa-users"></i>
+            <div>
+                <h3>520</h3>
+                <p>Total Customers</p>
+            </div>
+        </div>
+
+        -- Monthly Signups Growth Counter --
+        <div class="card">
+            <i class="fa-solid fa-user-plus"></i>
+            <div>
+                <h3>25</h3>
+                <p>New This Month</p>
+            </div>
+        </div>
+
+        -- Cumulative Sales Order Invoices Counter --
+        <div class="card">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <div>
+                <h3>156</h3>
+                <p>Total Orders</p>
+            </div>
+        </div>
+
+        -- High-Tier Frequent Loyal Buyers Metric --
+        <div class="card">
+            <i class="fa-solid fa-star"></i>
+            <div>
+                <h3>48</h3>
+                <p>Regular Customers</p>
+            </div>
+        </div>
+
+    </div>
+
+     ==========================================
+       03. FILTER & LOOKUP MANAGEMENT COMPONENT
+       ==========================================
+    <div class="box">
+        <div class="filter-row">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search Customer..." />
+            </div>
+        </div>
+    </div>-->
+
+    <!-- ==========================================
+       04. REGISTERED CUSTOMERS MASTER ROSTER DATA MATRIX
+       ========================================== -->
+    <div class="box">
+        <div class="table-header">
+            <h2>Customer List</h2>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Orders</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if customers %}
+                    {% for customer in customers %}
+                    <tr>
+                        <td>#CUS{{ "%03d"|format(loop.index) }}</td>
+                        <td>{{ customer.customer_name }}</td>
+                        <td>{{ customer.customer_email }}</td>
+                        <td>{{ customer.customer_phone }}</td>
+                        <td>{{ customer.total_orders }}</td>
+                        <td>
+                            <span class="status-active">Active</span>
+                        </td>
+                        <td>
+                            <button type="button" class="edit-btn">View</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" style="text-align:center; padding:25px;">
+                            No Customers Found
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "adminbase.html" %}
+
+
+{% block title %}
+Edit Category | Loom & Lux Studio
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="form-page">
+
+
+    <div class="page-header">
+        <div>
+            <h1>Edit Category</h1>
+            <p>Update category information</p>
+        </div>
+    </div>
+
+
+
+    <div class="box">
+
+
+        <form method="POST">
+
+
+
+            <div class="mb-3">
+
+                <label>Category Name</label>
+
+                <input
+                type="text"
+                name="category_name"
+                class="form-control"
+                value="{{ category.category_name }}"
+                required>
+
+            </div>
+
+
+
+
+            <div class="mb-3">
+
+                <label>Description</label>
+
+                <textarea
+                name="description"
+                class="form-control"
+                rows="4"
+                placeholder="Enter category description"
+                >{{ category.description }}</textarea>
+
+
+            </div>
+
+
+
+
+            <div class="mb-3">
+
+                <label>Status</label>
+
+
+                <select
+                name="status"
+                class="form-select">
+
+
+                    <option
+                    value="Active"
+
+                    {% if category.status == "Active" %}
+                    selected
+                    {% endif %}
+
+                    >
+                    Active
+                    </option>
+
+
+
+                    <option
+                    value="Inactive"
+
+                    {% if category.status == "Inactive" %}
+                    selected
+                    {% endif %}
+
+                    >
+                    Inactive
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+
+            <button type="submit" class="btn contact-btn">
+
+                Update Category
+
+            </button>
+
+
+
+            <a href="{{ url_for('add_category') }}"
+               class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

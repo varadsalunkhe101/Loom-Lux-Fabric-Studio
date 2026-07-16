@@ -1,0 +1,159 @@
+{% extends "adminbase.html" %}
+
+{% block title %}
+Orders | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<div class="form-page">
+
+    <!-- ===========================================================
+    PAGE HEADER
+    ============================================================ -->
+    <div class="page-header">
+        <div>
+            <h1>Orders Management</h1>
+            <p>Manage customer orders and update order status</p>
+        </div>
+    </div>
+
+    <!-- ===========================================================
+    ORDER TABLE
+    ============================================================ -->
+
+    <div class="box">
+
+        <div class="table-header">
+            <h2>Order List</h2>
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th width="270">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% if orders %}
+
+                {% for order in orders %}
+
+                <tr>
+
+                    <td>#RF{{ "%04d"|format(order.order_id) }}</td>
+
+                    <td>{{ order.customer_name }}</td>
+
+                    <td>{{ order.customer_phone }}</td>
+
+                    <td>{{ order.product_name }}</td>
+
+                    <td>{{ order.quantity }} Meter(s)</td>
+
+                    <td>
+
+                        {% if order.order_status == "Pending" %}
+                            <span class="status-pending">Pending</span>
+
+                        {% elif order.order_status == "Seen" %}
+                            <span class="status-processing">Seen</span>
+
+                        {% elif order.order_status == "Processing" %}
+                            <span class="status-processing">Processing</span>
+
+                        {% elif order.order_status == "On The Way" %}
+                            <span class="status-processing">On The Way</span>
+
+                        {% elif order.order_status == "Delivered" %}
+                            <span class="status-active">Delivered</span>
+
+                        {% else %}
+                            <span class="status-cancelled">Cancelled</span>
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a href="{{ url_for('view_order', order_id=order.order_id) }}">
+                            <button type="button" class="edit-btn">
+                                View
+                            </button>
+                        </a>
+
+                        <form action="{{ url_for('update_order_status', order_id=order.order_id) }}"
+                              method="POST"
+                              style="display:inline-block; margin-left:8px;">
+
+                            <select name="order_status"
+                                    onchange="this.form.submit()"
+                                    style="padding:7px;border-radius:6px;">
+
+                                <option value="Pending"
+                                {% if order.order_status=="Pending" %}selected{% endif %}>
+                                    Pending
+                                </option>
+
+                                <option value="Seen"
+                                {% if order.order_status=="Seen" %}selected{% endif %}>
+                                    Seen
+                                </option>
+
+                                <option value="Processing"
+                                {% if order.order_status=="Processing" %}selected{% endif %}>
+                                    Processing
+                                </option>
+
+                                <option value="On The Way"
+                                {% if order.order_status=="On The Way" %}selected{% endif %}>
+                                    On The Way
+                                </option>
+
+                                <option value="Delivered"
+                                {% if order.order_status=="Delivered" %}selected{% endif %}>
+                                    Delivered
+                                </option>
+
+                                <option value="Cancelled"
+                                {% if order.order_status=="Cancelled" %}selected{% endif %}>
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+                    <td colspan="7" style="text-align:center;padding:30px;">
+                        No Orders Found
+                    </td>
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

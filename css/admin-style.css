@@ -1,0 +1,1075 @@
+/* ==========================================================================
+   RIGHT FABRIC STUDIO - ADMIN DASHBOARD
+   PREMIUM GLASS UI MASTER STYLESHEET
+   ========================================================================== */
+
+/* --- External Typography Imports --- */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght=300;400;500;600;700&family=Cormorant+Garamond:wght=500;600;700&display=swap");
+
+/* --- Core Application Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Global Base Body Elements --- */
+body {
+    font-family: "Manrope", sans-serif;
+    background: #f5f5f5;
+    color: #111;
+}
+
+/* ==========================================================================
+   SIDEBAR ARCHITECTURE & NAVIGATION CORES
+   ========================================================================== */
+
+/* Main Sidebar Shell Container */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    padding: 30px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url("../images/sidebar-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 2px solid rgba(201, 168, 106, 0.6);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Sidebar Custom Scrollbar Track */
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Sidebar Scrollbar Thumb Element */
+.sidebar::-webkit-scrollbar-thumb {
+    background: lightslategray;
+    border-radius: 20px;
+}
+
+/* --- Brand Typography Header Group --- */
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Main Brand Header Logo */
+.logo h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: white;
+}
+
+/* Secondary Brand Tagline Subtext */
+.logo p {
+    color: #bbb;
+    margin-top: 5px;
+}
+
+/* --- Interactive Navigation Items --- */
+
+/* Sidebar Navigation Row Items */
+.sidebar ul li {
+    margin-bottom: 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    transition: all 0.35s ease;
+    list-style: none; /* Safeguard override reset */
+}
+
+/* Sidebar Active & Hover Selected Row Blocks */
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Anchor Links Inside Nav Items */
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+/* Link Color on Active Row States */
+.sidebar ul li:hover a,
+.sidebar ul li.active a {
+    color: white;
+}
+
+/* Vector Icons on Active States */
+.sidebar ul li:hover i,
+.sidebar ul li.active i {
+    color: lightslategray;
+}
+
+/* ==========================================================================
+   MAIN DASHBOARD WORKSPACE WRAPPER
+   ========================================================================== */
+
+/* Main Context Content Shell offsets the fixed sidebar width */
+.main {
+    margin-left: 280px;
+    padding: 30px;
+    width: calc(100% - 280px);
+}
+
+/* ==========================================================================
+   TOPBAR COMPONENTS BAR
+   ========================================================================== */
+
+/* Shared Fluid Subheader Header Shell */
+.topbar {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 25px 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* Workspace Greetings Header */
+.top-left h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+}
+
+/* User Subtitle Secondary Text Info */
+.top-left p {
+    color: #777;
+}
+
+/* Layout Utilities Block Group */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* ==========================================================================
+   LOOKUP COMPONENTS (SEARCH BAR & FILTERS)
+   ========================================================================== */
+
+/* Floating Search Bar Form Shell Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+}
+
+/* FontAwesome Search Icon Glyph Placement */
+.search-box i {
+    color: #777;
+}
+
+/* Text Input Area Layer inside Search Bar */
+.search-box input {
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    width: 220px;
+    max-width: 100%;
+    background: none;
+}
+
+/* Dropdown Filtering Interactive Options Form Selection Element */
+.form-select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    min-width: 200px;
+    outline: none;
+    background-color: #fff;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.2s ease;
+}
+
+.form-select:focus {
+    border-color: lightslategray;
+}
+
+/* Multi-Option Filtering Display Tool Row */
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ==========================================================================
+   ANALYTICS CARD GRIDS
+   ========================================================================== */
+
+/* Metric Blocks Dashboard Card Grid Framework */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    align-items: stretch;
+    margin-bottom: 30px;
+}
+
+/* Metric Display Container Element Block */
+.card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+/* Subtle Transform Animation Hover Interaction */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Decorative Icon Display Box */
+.card i {
+    font-size: 40px;
+    color: lightslategray;
+}
+
+/* Analytics Numerical Total Values Counter */
+.card h3 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* Metric Segment Subtitle Labels text */
+.card p {
+    color: #666;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   CATEGORY MANAGEMENT SPECIALIZED MODULES
+   ========================================================================== */
+
+/* Spacing and grid matching utilities for standard wrappers */
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+/* Base utility for modern input controls mapping Bootstrap styles to Glass UI */
+.mb-3 label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #222;
+}
+
+.mb-3 .form-control {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    background-color: #fff;
+    font-family: "Manrope", sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mb-3 .form-control:focus {
+    border-color: lightslategray;
+    box-shadow: 0 0 0 3px rgba(119, 136, 153, 0.15);
+}
+
+/* --- Action Trigger Optimization --- */
+
+/* Action Button: Update Category Terminal (matches .save-btn structure) */
+.btn.contact-btn {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "Manrope", sans-serif;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn.contact-btn:hover {
+    background: lightslategray;
+    transform: translateY(-2px);
+}
+
+/* Action Button: Cancel Redirection System (matches .cancel-btn style but neutral secondary variant) */
+.btn.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "Manrope", sans-serif;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn.btn-secondary:hover {
+    background: #d4d4d4;
+    transform: translateY(-2px);
+}
+
+/* --- Master List Layout Adjustments --- */
+
+/* Margin utility layout for Category List box extension */
+.mt-5 {
+    margin-top: 40px !important;
+}
+
+/* Inline text weight overrides for table cells */
+table td strong {
+    font-weight: 600;
+    color: #111;
+}
+
+/* Responsive adjustment for portable configurations */
+@media (max-width: 600px) {
+    .btn.contact-btn,
+    .btn.btn-secondary {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .btn.btn-secondary {
+        margin-top: 12px;
+    }
+}
+
+/* ==========================================================================
+   ACTION TRIGGERS BUTTONS & SYSTEM NOTIFICATIONS
+   ========================================================================== */
+
+/* Flash Message Animation Containers */
+.flash-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+.flash-alert {
+    min-width: 320px;
+    padding: 16px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.5s ease;
+}
+
+/* Operational Status Notifications variants */
+.flash-alert.success {
+    background: #e8f8ee;
+    color: #1b7a3d;
+    border-left: 5px solid #28a745;
+}
+
+.flash-alert.danger {
+    background: #ffe8e8;
+    color: #a32020;
+    border-left: 5px solid #dc3545;
+}
+
+/* Standard Modal Window Close Action Trigger Component */
+.flash-alert button {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Animation Keyframing */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Quick Action Button Group Box Wrapper */
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+/* Quick Action Triggers Buttons Core Element styling */
+.quick-actions button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+/* Actions Buttons Interactive Hover Settings */
+.quick-actions button:hover {
+    background: lightslategray;
+    transform: translateY(-6px);
+}
+
+/* ==========================================================================
+   DATA CONTAINERS CORES (CHART / GENERAL CARDS PLATES)
+   ========================================================================== */
+
+/* Chart Layout Card & General Workspace Plate Modules */
+.chart-box,
+.box {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+/* Custom Chart Box Spacing Margins Offset override */
+.chart-box {
+    margin-bottom: 30px;
+}
+
+/* Container Title Heading Element Labels typography */
+.chart-box h2,
+.box h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Dynamic Structured Block Header Layout for Workspace Plates */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Structural internal subsection headers */
+.box h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #111;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 5px;
+}
+
+/* Structured Key/Value Detail fields */
+.box p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.box p b {
+    color: #111;
+    display: inline-block;
+    width: 130px;
+}
+
+/* Dedicated Presentation Display box for Custom messages/requirements */
+.message-box {
+    background: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid lightslategray;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0 20px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Splitted Grid Configuration Workspace for Two Column Admin Panels */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* System Module Content Block Default Layout Heights */
+.box {
+    min-height: 280px;
+}
+
+/* Reset settings for unordered unstyled list groups in content modules */
+.box ul {
+    list-style: none;
+}
+
+/* Data Record Listing Rows */
+.box ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ==========================================================================
+   DATA MATRIX TABLES SEGMENTS
+   ========================================================================== */
+
+/* Core Operational Application Grid Table structure */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Admin Data Table Primary Header Labels styling */
+table th {
+    background: #111;
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Individual Data Matrix Column Field Cells mapping */
+table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;
+}
+
+/* Table Row Tracking Highlighters Hover Interaction */
+table tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* --- Inline Catalog Media Imagery Thumbnail Styles --- */
+table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Target actions data cell wrapper to preserve structural alignment */
+table td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: none;
+    min-width: 150px;
+}
+
+/* Anchor styling inside action context headers */
+table td a {
+    text-decoration: none;
+    display: inline-flex;
+}
+
+/* ==========================================================================
+   WORKFLOW LIFECYCLE STATUS BADGES
+   ========================================================================== */
+
+/* Active / Finalized Completed Record Highlight Tag */
+.status-active {
+    background: #e8f8ec;
+    color: #1e7e34;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* Pending / Processing Awaiting Review Hold Tag */
+.status-pending {
+    background: #fff8e1;
+    color: #a06b00;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* In-Logistics Dispatch Shipment Route Lifecycle Tag */
+.status-processing {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   ROW ACTION COMPONENT CONTROLS (EDIT / DELETE TRIGGERS)
+   ========================================================================== */
+
+/* Inline Base Row Action Modification Trigger Button */
+table td .edit-btn {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    height: 34px;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Inline Edit Controls Hover Modifiers */
+table td .edit-btn:hover {
+    background: lightslategray;
+    transform: translateY(-2px);
+}
+
+/* Inline Table Deletion System Drop Trigger button */
+table td .delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    height: 34px;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Inline Deletion Hover Modifier Styles */
+table td .delete-btn:hover {
+    background: #bd2130;
+    transform: translateY(-2px);
+}
+
+/* Backwards-compatibility rules for button triggers declared outside data grids */
+.edit-btn {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.edit-btn:hover {
+    background: lightslategray;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #bd2130;
+}
+
+/* ==========================================================================
+   INPUT CONSOLE FORMS VIEW SEGMENTS
+   ========================================================================== */
+
+/* Form Component Canvas Management Container */
+.form-page {
+    padding: 10px 0;
+}
+
+/* Structured Form Header Grid Wrapper */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Title Label Text inside Form Modules */
+.page-header h1 {
+    font-size: 42px;
+    font-family: "Cormorant Garamond", serif;
+}
+
+/* Meta Support Information Subtext description */
+.page-header p {
+    color: #777;
+}
+
+/* Input Fields Functional Group Box block */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Form Descriptive Text Input Labels */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #222;
+}
+
+/* Interactive Raw Standard Form Inputs Fields selectors */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    background-color: #fff;
+    font-family: "Manrope", sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Form Input Element Component Focusing Track Ring Changes */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: lightslategray;
+    box-shadow: 0 0 0 3px rgba(119, 136, 153, 0.15);
+}
+
+/* File uploading type customization fixes */
+.form-group input[type="file"] {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+/* Operational Submission Core Button Row Container */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Form Record Creation Submission operational trigger */
+.save-btn {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Save Buttons Hover State settings */
+.save-btn:hover {
+    background: lightslategray;
+    transform: translateY(-2px);
+}
+
+/* Standard Modification Reversion Terminal Action Button */
+.cancel-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Cancel Operational Button Hover Modifier Settings */
+.cancel-btn:hover {
+    background: #bd2130;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS (MEDIA QUERIES)
+   ========================================================================= */
+
+/* --- Breakpoint Suite: Notebook Screens (1100px Scale Boundaries) --- */
+@media (max-width: 1100px) {
+
+    /* Top Subheading Section Element Orientation Alignment Flip */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    /* Controls Alignment System Rescaling blocks */
+    .top-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    /* Splitted Screen Dash Block Matrix Columns Flatten Layout */
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Breakpoint Suite: Tablet Canvas Screen Views (768px Scale Boundaries) --- */
+@media (max-width: 768px) {
+
+    /* Minimized Compact Mode Sidebar Base Container Transform */
+    .sidebar {
+        width: 80px;
+        padding: 20px 10px;
+    }
+
+    /* Brand Logo Scaledown Adjustments */
+    .logo h2 {
+        font-size: 22px;
+    }
+
+    /* Collapse Brand Support Details Tagline Meta Text information */
+    .logo p {
+        display: none;
+    }
+
+    /* Icon Centering inside Compact Mode Nav Items List Layout */
+    .sidebar ul li a {
+        justify-content: center;
+        font-size: 0; /* Conceal Typography String Labels cleanly */
+    }
+
+    /* Scaled Vector Icon Positioning Modifiers inside Navigation Row Links */
+    .sidebar ul li i {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    /* Expand Workspace Canvas to fill space vacated by Sidebar shrinkage */
+    .main {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+        padding: 20px;
+    }
+
+    /* Subheader Navigation Layout Compression */
+    .topbar {
+        padding: 20px;
+    }
+
+    /* Greeting Label Text Downscaling Viewports */
+    .top-left h2 {
+        font-size: 32px;
+    }
+
+    /* Force Search Layout Fields to fill available container widths */
+    .search-box {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Search Form Text inputs fields stretching adjustments */
+    .search-box input {
+        width: 100%;
+    }
+
+    /* Flatten out Statistics Row items into single vertical columns block */
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Flatten out Double Grid Sections down into Single vertical block stacks */
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack up Quick Access Actions Buttons vertically */
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    /* Extend Quick Action Trigger buttons to fill the entire container plate widths */
+    .quick-actions button {
+        width: 100%;
+    }
+
+    /* Prevent text wrapping issues by enabling horizontal data scrolling containers */
+    .box,
+    .chart-box {
+        overflow-x: auto;
+    }
+
+    /* Retain clean table field structural matrix widths without compressing data data columns */
+    table {
+        min-width: 800px;
+    }
+
+    /* Action triggers flexible breakdown configuration for tablet sizes */
+    table td:last-child {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+}
+
+/* --- Breakpoint Suite: Smartphone Portable Screen Views (600px Scale Boundaries) --- */
+@media (max-width: 600px) {
+
+    /* Complete Hidden Collapse Extraction of Sidebar Terminal Component */
+    .sidebar {
+        display: none;
+    }
+
+    /* Main Console Area Expand Layout to Full-Width Screen Coverage Canvas */
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Compact Top Header Spacing adjustments */
+    .topbar {
+        padding: 15px;
+    }
+
+    /* Typography scale steps down adjustments for Greetings Header Text labels */
+    .top-left h2 {
+        font-size: 28px;
+    }
+
+    /* Force Utility Toolbar Layout groups to spread out fully across screen widths */
+    .top-right {
+        width: 100%;
+        gap: 10px;
+    }
+
+    /* Expand Lookup Search Component Layout box to span Full Screen limits */
+    .search-box {
+        width: 100%;
+    }
+
+    /* Search Component Text Box String Form Input area stretch optimization */
+    .search-box input {
+        width: 100%;
+    }
+
+    /* Compact analytical tracking metrics item padding adjustments */
+    .card {
+        padding: 20px;
+    }
+
+    /* Downscale Numerical Counter Value Text size */
+    .card h3 {
+        font-size: 24px;
+    }
+
+    /* Compact inner Padding spacing modifications for main Content plates blocks */
+    .chart-box,
+    .box {
+        padding: 20px;
+    }
+
+    /* Form Module Main Layout Title Downscaling text label viewport steps */
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    /* Stack console submission operational buttons row elements vertically */
+    .form-actions {
+        flex-direction: column;
+    }
+
+    /* Enforce Save Records System Actions buttons to extend across full terminal widths */
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}

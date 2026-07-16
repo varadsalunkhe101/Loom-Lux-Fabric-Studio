@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+Place Order | Loom & Lux Studio
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <!-- =======================================================================
+    01. ORDER HEADER HERO BANNER
+    ======================================================================== -->
+    <section class="order-hero">
+        <div class="order-content">
+            <h1>Place Your Order</h1>
+            <p>
+                Submit your fabric requirements and our team will connect with you regarding pricing, availability, and delivery details.
+                For individual piece orders, you can easily place your request through our page. For multiple orders or bulk requirements, we recommend contacting us directly online or offline for personalized assistance. Our team will get back to you at the earliest and ensure a smooth ordering experience with complete support.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn btn-dark btn-lg">
+                Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    02. RECEPTION TRANSACTION & FORM PLATFORM
+    ======================================================================== -->
+    <section class="container my-5">
+        <div class="order-card">
+
+            <h2 class="text-center mb-4">Order Request Form</h2>
+
+            <form action="{{ url_for('order') }}" method="POST">
+
+                <!-- Row 1: Contact Profiling Details -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" name="phone" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Row 2: Digital Address & Category Filtration -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Fabric Category</label>
+                        <select name="category_id" id="category" class="form-select" required>
+                            <option value="">Select Category</option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_id }}">
+                                    {{ category.category_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 3: Product Mapping & Sizing Details -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Product Name</label>
+                        <select name="product_id" id="product" class="form-select" required>
+                            <option value="">Select Product</option>
+                            {% for product in products %}
+                                <option value="{{ product.product_id }}" data-category="{{ product.category_id }}">
+                                    {{ product.product_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Quantity (Meters)</label>
+                        <input type="number" name="quantity" class="form-control" min="1" required>
+                    </div>
+                </div>
+
+                <!-- Shipping Logistical Target Context -->
+                <div class="mb-3">
+                    <label class="form-label">Delivery Address</label>
+                    <textarea name="address"
+                              rows="3"
+                              class="form-control"
+                              placeholder="Please provide your complete delivery address with Area, City/Village, Taluka, District, State and Pincode"
+                              required></textarea>
+                </div>
+
+                <!-- Secure Dynamic Payment Gateway Segment -->
+                <div class="scan-pay mb-4">
+                    <label class="form-label fw-bold">Scan & Pay</label>
+                    <div class="text-center mb-3">
+                        <img src="{{ url_for('static', filename='images/Payment-QR.jpeg') }}"
+                             alt="Payment QR Code"
+                             class="qr-image">
+                        <p class="mt-3 text-muted">Scan the QR Code and complete your payment.</p>
+                    </div>
+                </div>
+
+                <!-- Audit Ledger Transaction Reference -->
+                <div class="mb-4">
+                    <label class="form-label">UTR / Transaction Number</label>
+                    <input type="text"
+                           name="utr_number"
+                           class="form-control"
+                           placeholder="Enter UTR Number"
+                           required>
+                </div>
+
+                <!-- Tailored Custom Instructions -->
+                <div class="mb-4">
+                    <label class="form-label">Additional Requirements</label>
+                    <textarea name="message"
+                              rows="4"
+                              class="form-control"
+                              placeholder="Color preference, design, special instructions..."></textarea>
+                </div>
+
+                <button type="submit" class="btn order-btn w-100">
+                    Submit Order Request
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<!-- =======================================================================
+    03. CLIENT-SIDE CASCADE FILTERING ENGINE (JAVASCRIPT)
+======================================================================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const category = document.getElementById("category");
+        const product = document.getElementById("product");
+
+        function filterProducts() {
+            const selectedCategory = category.value;
+            product.selectedIndex = 0;
+
+            for (let i = 1; i < product.options.length; i++) {
+                const option = product.options[i];
+
+                if (selectedCategory === "") {
+                    option.style.display = "none";
+                } else if (option.dataset.category === selectedCategory) {
+                    option.style.display = "";
+                } else {
+                    option.style.display = "none";
+                }
+            }
+        }
+
+        filterProducts();
+        category.addEventListener("change", filterProducts);
+    });
+</script>
+{% endblock %}

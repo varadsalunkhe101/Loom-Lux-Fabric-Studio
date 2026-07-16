@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact Us | Loom & Luxe Studio
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <!-- =======================================================================
+    01. CONTACT HEADER HERO BANNER
+    ======================================================================== -->
+    <section class="contact-hero">
+        <div class="contact-content">
+            <h1>Contact Us</h1>
+            <p>
+                We'd love to hear from you. Reach out for fabric inquiries, product information, or business
+                partnerships.
+            </p>
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    02. SPLIT LAYOUT: DIRECT STORE DETAILS & RECEPTION ENQUIRY FORM
+    ======================================================================== -->
+    <section class="container my-5">
+        <div class="row g-5">
+
+            <!-- Store Details Plate Panel -->
+            <div class="col-lg-5">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Visit our store or contact us using the details below.</p>
+
+                    <div class="contact-item">
+                        <h5>Address</h5>
+                        <p>
+                            Gala No. 10, Vakhar Bhag, Near Maruti Chowk, Sangli, Maharashtra – 416416
+
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h5>Email</h5>
+                        <p>loom&lux@gmail.com</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h5>Phone</h5>
+                        <p>+91 95XXXXXXXX</p>
+                        <p>+91 73XXXXXXXX</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h5>Business Hours</h5>
+                        <p>Monday - Saturday</p>
+                        <p>9:00 AM - 8:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reception Form Gateway Panel -->
+            <div class="col-lg-7">
+                <div class="contact-form">
+                    <h2 class="mb-4">Send a Message</h2>
+                    <form method="POST" action="{{ url_for('contact') }}">
+
+                        <div class="mb-3">
+                            <input type="text"
+                                   name="full_name"
+                                   class="form-control"
+                                   placeholder="Full Name"
+                                   required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="email"
+                                   name="email"
+                                   class="form-control"
+                                   placeholder="Email Address"
+                                   required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="tel"
+                                   name="phone"
+                                   class="form-control"
+                                   placeholder="Phone Number"
+                                   required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text"
+                                   name="subject"
+                                   class="form-control"
+                                   placeholder="Subject"
+                                   required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea name="message"
+                                      class="form-control"
+                                      rows="5"
+                                      placeholder="Your Message"
+                                      required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn contact-btn w-100">
+                            Send Message
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =======================================================================
+    03. EMBEDDED GEOLOCATION MAP CONTAINER
+    ======================================================================== -->
+    <section class="container my-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title">Visit Our Store</h2>
+            <p class="text-muted">Find us easily with Google Maps.</p>
+        </div>
+
+        <div class="map-container">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.278595022474!2d74.56834157492221!3d16.862107583938258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1199b1018f423%3A0xbc86d6216870aee3!2sWebaru%20IT%20Solutions!5e0!3m2!1sen!2sin!4v1783571728886!5m2!1sen!2sin"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

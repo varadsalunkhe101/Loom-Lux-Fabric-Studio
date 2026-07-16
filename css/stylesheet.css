@@ -1,0 +1,1053 @@
+/* ==========================================================================
+   RIGHT FABRIC STUDIO - PUBLIC STOREFRONT
+   GLOBAL CORE & COMPONENTS MASTER STYLESHEET
+   ========================================================================== */
+
+/* --- External Typography Imports --- */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght=300;400;500;600;700&family=Cormorant+Garamond:wght=500;600;700&display=swap");
+
+/* --- 1. GLOBAL & BASE RESET STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #111;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+/* --- Global Typography Blocks --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* --- Global Layout Section Spaces --- */
+section {
+    padding: 100px 0;
+}
+
+/* --- Bootstrap Native Form Utilities Alignment Patches --- */
+.mb-3 {
+    height: 80px;
+}
+
+
+/* ==========================================================================
+   2. SITE-WIDE VIEWPORT LAYOUT COMPONENTS
+   ========================================================================== */
+
+/* --- Top Utility Alert Header Bar --- */
+header {
+    background: #000;
+    color: #fff;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+/* --- Sticky Global Navigation Bar --- */
+nav {
+    background: white;
+    padding: 5px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Flexbox Align Setup inside Navbar Row Box Container */
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Vector Brand Representation Identity Asset */
+#logo {
+    width: 100px;
+    height: 100px;
+    transition: 0.4s;
+}
+
+/* Brand Identity Interactive Zoom Settings */
+#logo:hover {
+    transform: scale(1.08);
+}
+
+/* Navigation Row Control Links Anchor elements styling */
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 10px;
+    transition: 0.3s;
+}
+
+/* Underline Animation Strip Target inside Navigation link anchors */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #8b5e3c, #d4a373);
+    border-radius: 20px;
+    transform: translateX(-50%);
+    transition: 0.4s;
+}
+
+/* Underline Strip Slider Animation Trigger on Link Anchor Hover */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Navigation Anchor Hover Interaction States Modifiers */
+.nav-link:hover {
+    color: #8b5e3c;
+    transform: translateY(-3px);
+}
+
+/* --- Floating Communication Action Layers --- */
+
+/* Sticky Gradient Instagram Action Button Layer */
+.instagram-float {
+    position: fixed;
+    bottom: 95px; /* Safely offsets over WhatsApp layer */
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+    z-index: 9999;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    box-shadow: 0 8px 25px rgba(220, 39, 67, 0.35);
+    transition: all 0.3s ease;
+}
+
+/* Sticky Instagram Interaction Hover Modifiers */
+.instagram-float:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Sticky Direct API Link WhatsApp Gateway Layer button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Sticky WhatsApp Action Trigger Hover Modifiers */
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+/* --- Global Footer Plate Component --- */
+footer {
+    background: #0d0d0d;
+    color: white;
+    padding: 80px 0 30px;
+}
+
+/* Section Subheading Headers Inside Footer Panels */
+footer h4 {
+    margin-bottom: 20px;
+}
+
+/* Primary Descriptive Paragraph Blocks Inside Footer Rows */
+footer p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+/* Content Address Context Icons Inside Footer Rows */
+footer i {
+    margin-right: 8px;
+    color: #fff;
+}
+
+/* Decorative Divider Structural Rules Segments */
+footer hr {
+    border-color: rgba(255, 255, 255, 0.15);
+    margin: 30px 0;
+}
+
+
+/* ==========================================================================
+   3. LANDING HOMEPAGE BLOCKS & GENERIC PLATFORM CARDS
+   ========================================================================== */
+
+/* --- Main Brand Hero Carousel Showcase Slider --- */
+.hero {
+    position: relative;
+    min-height: 90vh;
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* Glare Layer Dimmer Mask on Hero Sliders background images */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Individual Image Canvas Frame Slide within Hero Block Container */
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+/* Active Class visibility selector for current Slide presentation */
+.slide.active {
+    opacity: 1;
+}
+
+/* Hero Carousel Slide Image Background Target #1 */
+.slide:nth-child(1) {
+    background-image: url("../images/banner1.jpg");
+}
+
+/* Hero Carousel Slide Image Background Target #2 */
+.slide:nth-child(2) {
+    background-image: url("../images/banner2.jpg");
+}
+
+/* Hero Carousel Slide Image Background Target #3 */
+.slide:nth-child(3) {
+    background-image: url("../images/banner3.jpg");
+}
+
+/* Positioning Layer for Text elements inside Brand Hero Frame layout */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+/* Main Catchy Brand Header Text scale setup */
+.hero-content h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Subtitle Descriptions Typography inside Hero Showcase Group */
+.hero-content p {
+    font-size: 1.2rem;
+    color: #eee;
+    margin-bottom: 35px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Generic Action Button setup inside Hero Showcase Frame */
+.hero-btn {
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Accent Highlight Action Button theme modifier */
+.primary {
+    background: #cbaa4c;
+    color: white;
+}
+
+/* Translucent Secondary Action Button theme modifier */
+.secondary {
+    border: 1px solid white;
+}
+
+/* --- Generic Platform Layout Cards --- */
+.custom-card {
+    border: none;
+    border-radius: 20px;
+    height: 100%;
+    transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.custom-card:hover {
+    transform: translateY(-8px);
+}
+
+.custom-card p {
+    color: #555;
+}
+
+/* --- Why Choose Us Brand Strategy Module --- */
+.choose-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 16px;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.choose-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Feature Decorative Vector Icon Inside Strategy Blocks */
+.choose-card i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* --- About Us Informational Module --- */
+.about-card {
+    transition: all 0.3s ease;
+    height: 200px;
+}
+
+/* Interactive Border Accent Modifier on Profile Plate Hover */
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-top: 4px solid #c9a86a;
+}
+
+.about-card h3 {
+    transition: 0.3s;
+}
+
+/* Title Color Modifier Trigger on Informational Plate Hover */
+.about-card:hover h3 {
+    color: #8b5e3c;
+}
+
+/* --- New Arrivals Showcase Segment --- */
+.arrival-hero {
+    position: relative;
+    min-height: 90vh;
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: url("../images/new-arrival-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px; /* Optional: gives the massive container a modern look */
+    overflow: hidden; /* Clips the pseudo-element to the border radius */
+}
+
+/* Glare Layer Mask over New Arrivals Background canvas */
+.arrival-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1; /* Sits on top of the image */
+}
+
+/* Positioning Layer for Content inside New Arrivals Banner framework */
+.arrival-content {
+    position: relative;
+    z-index: 2; /* Sits on top of the overlay mask */
+}
+
+.arrival-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive sizing: shrinks on mobile, grows on desktop */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.arrival-content p {
+    font-size: 1.2rem;
+    max-width: 600px; /* Keeps line length readable */
+    margin: 0 auto 2rem auto;
+    opacity: 0.9;
+}
+
+/* New Arrival Product Item display box layout */
+.arrival-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    height: 450px; /* Increased slightly to accommodate button spacing */
+    display: flex;
+    flex-direction: column;
+}
+
+.arrival-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Catalog Imagery fitting */
+.arrival-card img {
+    width: 100%;
+    height: 250px; /* Forces all images to the same height */
+    object-fit: cover;
+}
+
+/* Ensure the card body fills remaining space and aligns button */
+.arrival-card .p-3 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- Fabric Showcase Categorized Grid Block --- */
+.category-card {
+    height: 450px;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for premium feel */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-card img {
+    width: 100%;
+    height: 350px; /* Fixed height for the image so text has room below */
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+/* Hover effect to trigger that smooth 0.8s transition you built */
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Direct Image Zoom Interaction inside Fabric Box Frame */
+.fabric-card:hover img {
+    transform: scale(1.12);
+}
+
+/* Title Text & Action Button Overlay Layer inside Fabric Showcase Boxes */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Action Redirect Button inside Fabric Overlay Plate */
+.overlay button {
+    width: max-content;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- Customer Testimonials Feedback Module --- */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Customer Review Card Canvas Module */
+.testimonial-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+/* Highlight Drop Shadow effect on Feedback Box Hover */
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+}
+
+/* Gold Colored Star Feedback Icon Glyphs Grouping */
+.stars {
+    font-size: 22px;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+/* Review Text Comments Blocks inside Feedback Cards */
+.testimonial-card p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Customer Signature Name Labels inside Feedback Blocks */
+.testimonial-card h5 {
+    color: #222;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   4. STYLES FOR STOREFRONT INTERNAL PAGES
+   ========================================================================== */
+
+/* --- Catalog Collection Pages (Suiting & Shirting Viewports) --- */
+.category-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../images/suiting-banner.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Content Layout Alignment Shell inside Catalog Categories Header Banner */
+.category-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Primary Header Label Scale settings for Collection Pages */
+.category-content h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 20px;
+}
+
+/* Subtitle Descriptions inside Collection Banner Hero Blocks */
+.category-content p {
+    font-size: 1.15rem;
+    color: #f5f5f5;
+}
+
+/* Category Intro Summary block wrapper */
+.category-intro {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.category-intro p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Premium Highlight Benefit Block display card */
+.category-benefit {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 1px solid #eee;
+    cursor: pointer;
+    height: 150px;
+}
+
+/* Highlight shadow and lift effect on Benefit Module hover */
+.category-benefit:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+}
+
+.category-benefit h3 {
+    transition: color 0.4s ease;
+}
+
+/* Color Accent shift inside Benefit Heading Text on hover interaction */
+.category-benefit:hover h3 {
+    color: #d4af37;
+}
+
+.category-benefit:hover p {
+    color: #555;
+}
+
+/* --- Catalog Grid Product Cards System --- */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* High Contrast Shadow Drop on Catalog Product Row Cards Hover */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Uniform Clipping Mask for Fabric Catalog Images inside Cards */
+.product-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Text Meta Block Layout Wrapper inside Catalog Product Cards */
+.product-info {
+    padding: 25px;
+}
+
+.product-info h4 {
+    margin-bottom: 12px;
+    color: #111;
+}
+
+.product-info p {
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* --- Authentication Gateway Hub Panels (Login & Signup Views) --- */
+.account-card {
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    transition: 0.4s ease;
+}
+
+/* Visual Theme Showcase Panel inside Login Interface split layout */
+.account-left {
+    background: linear-gradient(135deg, #111111, #2b2b2b);
+    color: #fff;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+/* Main Display Title Label Typo on login dashboard panels */
+.account-heading {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Standard Platform Client Input Field Element modifications */
+.form-control {
+    height: 55px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    transition: 0.3s ease;
+    padding: 12px;
+}
+
+/* Tracking Glow Ring changes on Input Field Focus states */
+.form-control:focus {
+    border-color: #c9a86a;
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 106, 0.25);
+}
+
+/* Interactive Navigation Redirects inside Auth Module views */
+.forgot-link,
+.register-link {
+    color: #8b5e3c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-link:hover,
+.register-link:hover {
+    color: #c9a86a;
+}
+
+/* Core Form Submission Operational Trigger Button inside Auth Panel */
+.login-btn {
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    background: lightslategray;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+/* Color inversion settings for Login Action Button Hover states */
+.login-btn:hover {
+    transform: translateY(-2px);
+    background: whitesmoke;
+    color: #0d0d0d;
+}
+
+/* --- Customer Touchpoint Viewports (Contact Channels Dashboard) --- */
+.contact-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #000, #2c2c2c, #c9a86a);
+    padding: 20px;
+    min-height: 60vh;
+    color: white;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 1400px;
+}
+
+.contact-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+/* Base Component Panels for Contact Form Details & Map Displays */
+.contact-info,
+.contact-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.contact-info h2,
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+/* Structured Informational Text Line Blocks for Details Box */
+.contact-item {
+    margin-bottom: 25px;
+}
+
+.contact-item h5 {
+    color: #8b5e3c;
+    margin-bottom: 8px;
+}
+
+/* Standard Submission Button control for Enquiry messages */
+.contact-btn {
+    background: lightslategray;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: whitesmoke;
+    color: #0d0d0d;
+}
+
+/* Geolocation Map Component Clipping Mask Container Frame */
+.map-container {
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Checkout Processing Forms (Orders Entry Layout) --- */
+.order-hero {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), linear-gradient(135deg, #000, #2c2c2c, #c9a86a);
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 1400px;
+}
+
+.order-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.order-content h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 20px;
+}
+
+/* Core Form Frame Box Plate on Checkout Route viewports */
+.order-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.order-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Master Order Placement Form Submission Operational Trigger */
+.order-btn {
+    background: #c9a86a;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.order-btn:hover {
+    background: #8b5e3c;
+    color: white;
+}
+
+/* Shared Core Custom Form Elements Reset for Order Entry Selectors */
+.form-select {
+    border-radius: 12px;
+    padding: 12px;
+}
+
+/* Active Ring Highlights Tracking behavior on Form Focus paths */
+.form-select:focus {
+    border-color: #c9a86a;
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 106, 0.25);
+}
+
+/* --- Integrated Payment Gateway QR Modules --- */
+.scan-pay {
+    text-align: center;
+}
+
+/* Middle Layout Canvas Frame alignment for QR Image Elements */
+.scan-pay .text-center {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Digital Transaction Reference UPI Image Asset Canvas frame */
+.qr-image {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.scan-pay p {
+    margin-top: 15px;
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVE SITE MEDIA BREAKPOINTS CONFIGURATIONS
+   ========================================================================== */
+
+/* --- Breakpoint Suite: Tablet Viewports & Mobile Screen Scales --- */
+@media (max-width: 768px) {
+
+    /* Compress Alert Utility top Header row spacing height limits */
+    header {
+        height: auto;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* Compact Scale Step Modification for Sticky Instagram Widget Control */
+    .instagram-float {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+        bottom: 85px;
+        right: 20px;
+    }
+
+    /* Compact Scale Step Modification for Sticky WhatsApp Widget Control */
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* Realign Global Header Links items into dynamic single vertical columns block */
+    nav .container {
+        flex-direction: column;
+    }
+
+    /* Adjust Brand Identifier size for condensed layout scaling paths */
+    #logo {
+        width: 130px;
+    }
+
+    /* Downscale Brand Hero Landing Showcase canvas default frame layout heights */
+    .hero {
+        min-height: 70vh;
+    }
+
+    /* Core Title Typography step compression down modifications */
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    /* Condense overall block paddings layout section gaps across mobile targets */
+    section {
+        padding: 60px 0;
+    }
+
+    /* Scale structural heights limits down inside Fabric Catalog showcase blocks */
+    .fabric-card {
+        height: 350px;
+    }
+
+    /* Center down split layout views typography inside Auth Hub interfaces panels */
+    .account-left {
+        min-height: 300px;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .account-title {
+        font-size: 2.5rem;
+    }
+
+    .account-heading {
+        font-size: 2.2rem;
+    }
+
+    /* Compress Contact Dashboard Entry route Banner headers */
+    .contact-content h1 {
+        font-size: 2.8rem;
+    }
+
+    /* Tighten interior page paddings spaces layout settings for form plates blocks */
+    .contact-info,
+    .contact-form {
+        padding: 25px;
+    }
+
+    /* Condense Collection Pages top Canvas Banner background framework views */
+    .category-hero {
+        min-height: 50vh;
+    }
+
+    .category-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .category-content p {
+        font-size: 1rem;
+    }
+
+    /* Downscale image asset clip heights inside catalog item cards structure */
+    .product-card img {
+        height: 250px;
+    }
+
+    /* Downscale Testimonial Module Headline Labels sizing steps */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .testimonial-card {
+        padding: 25px;
+    }
+
+    /* --- Mobile Layout Footer Realignments --- */
+    footer {
+        padding: 50px 15px 20px;
+        text-align: center;
+    }
+
+    /* Push down first block grid items inside small system screen viewports */
+    footer .col-md-6:first-child {
+        margin-bottom: 35px;
+    }
+
+    /* Protect design system bounds by enabling word-breaking over elongated lines */
+    footer p {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    footer h4 {
+        margin-bottom: 15px;
+    }
+}
